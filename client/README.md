@@ -2,13 +2,13 @@
 
 Welcome to the client code for the BCS Bridging Module Course Recommender (working title Guru).
 
-## To preview 
+## To preview:
 
 ```sh
 git clone https://github.com/jianbai/guru.git
 open client/index.html
 ```
 
-## TODO:
+### TODO:
 - Autocomplete
 - Add shopping cart
