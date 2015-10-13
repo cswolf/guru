@@ -53,6 +53,8 @@ button:focus {
 	position: relative;
 }
 
+/* Search Type */
+
 .searchType {
 	display: inline-block;
 	margin: 50px 0 10px 0;
@@ -73,6 +75,8 @@ button:focus {
 	color: #fff;
 	background-color: #2e65a0;
 }
+
+/* Search Bar */
 
 .searchBar {
 	height: 30px;
@@ -108,9 +112,15 @@ button:focus {
 	top: -2px;
 }
 
+/* Search Terms */
+
 .searchBy {
 	margin-top: 10px;
 	display: inline-block;
+}
+
+.searchTerm {
+	margin-left: 10px;
 }
 
 .goButton {
@@ -129,4 +139,17 @@ button:focus {
 	position: absolute;
 	right: 40px;
 	top: 8px;
+}
+
+/* Results */
+.resultList {
+	margin: 10px 0 20px 0;
+}
+
+.result {
+	margin-top: 20px;
+}
+
+.result h4 {
+	color: #2e65a0;
 }
