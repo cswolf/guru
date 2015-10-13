@@ -1,0 +1,132 @@
+/** Fonts
+--------------------------------------------- **/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,400);
+
+/** Main styles
+--------------------------------------------- **/
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body, html {
+  font: 100%/1.5 'Roboto';
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: #333333;
+}
+
+a {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/** Header
+--------------------------------------------- **/
+
+.header {
+	height: 100px;
+	background-color: #002859;
+	color: #fff;
+}
+
+.title {
+	padding: 10px 20px;
+}
+
+/** Content
+--------------------------------------------- **/
+
+.content {
+	width: 600px;
+	margin: auto;
+	position: relative;
+}
+
+.searchType {
+	display: inline-block;
+	margin: 50px 0 10px 0;
+}
+
+.searchType * {
+	float: left;
+	margin-right: 20px;
+}
+
+.searchType div {
+	cursor: pointer;
+	padding: 0 5px;
+	border-radius: 2px;
+}
+
+.selected {
+	color: #fff;
+	background-color: #2e65a0;
+}
+
+.searchBar {
+	height: 30px;
+	position: relative;
+}
+
+.searchBar * {
+	float: left;
+	height: 40px;
+}
+
+.searchBar input {
+	width: 100%;
+	padding-left: 10px;
+}
+
+.addButton {
+	width: 42px;
+	height: 42px;
+	right: -14px;
+	top: 1px;
+	position: absolute;
+	cursor: pointer;
+	color: #fff;
+	background-color: #2e65a0;
+}
+
+.addButton p {
+	font-size: 30px;
+	margin: auto;
+	position: absolute;
+	right: 12px;
+	top: -2px;
+}
+
+.searchBy {
+	margin-top: 10px;
+	display: inline-block;
+}
+
+.goButton {
+	height: 42px;
+	width: 100px;
+	margin-top: 10px;
+	border-radius: 2px;
+	color: #fff;
+	background-color: #2e65a0;
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.goButton p {
+	position: absolute;
+	right: 40px;
+	top: 8px;
+}
