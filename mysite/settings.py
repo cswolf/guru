@@ -37,6 +37,7 @@ INSTALLED_APPS = (
   'django.contrib.sessions',
   'django.contrib.messages',
   'django.contrib.staticfiles',
+  'app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,7 +81,7 @@ DATABASES = {
     'USER': 'root',
     'NAME': 'guru',
     'PASSWORD': '91grapes',
-    'HOST': '/usr/local/mysql',
+    'HOST': '/tmp/mysql.sock',
     'PORT': '',
   }
 }
