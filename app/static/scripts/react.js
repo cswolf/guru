@@ -37,8 +37,8 @@ var SearchBar = React.createClass({
     return (
       <div className="searchBar">
         <input className="searchInput" type="text" placeholder="..." />
-        <div className="addButton" onClick={this.addSearchTerm}>
-          <p>+</p>
+        <div className="addButton" /*onClick={this.addSearchTerm}*/>
+          <p>go</p>
         </div>
       </div>
     );

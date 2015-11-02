@@ -105,11 +105,11 @@ button:focus {
 }
 
 .addButton p {
-  font-size: 30px;
+  font-size: 20px;
   margin: auto;
   position: absolute;
-  right: 12px;
-  top: -2px;
+  left: 10px;
+  top: 4px;
 }
 
 /* Search Terms */
