@@ -1,0 +1,5 @@
+name = '/usr/local/mysql/data/guru'
+user = 'root'
+password = '91grapes'
+host = '/usr/local/mysql'
+port = ''
