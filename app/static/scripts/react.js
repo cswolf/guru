@@ -18,37 +18,37 @@ var results = [ {"code": "COGS 300: Understanding and Designing Cognitive System
                   ];
 
 // Search Bar
-var SearchBar = React.createClass({
-  addSearchTerm: function() {
-    var searchTerm = $(".searchInput").val();
-    if (!searchTerm) {
-      alert('Please enter some text before adding a department or course.');
-      return;
-    }
-    searchTerms.push(searchTerm);
-    console.log(searchTerms);
-    $(".searchInput").val('');
-    React.render(
-      <SearchTermList />,
-      document.getElementById('searchTerms')
-    );
-  },
-  render: function() {
-    return (
-      <div className="searchBar">
-        <input className="searchInput" type="text" placeholder="..." />
-        <div className="addButton" /*onClick={this.addSearchTerm}*/>
-          <p>go</p>
-        </div>
-      </div>
-    );
-  }
-});
+// var SearchBar = React.createClass({
+//   addSearchTerm: function() {
+//     var searchTerm = $(".searchInput").val();
+//     if (!searchTerm) {
+//       alert('Please enter some text before adding a department or course.');
+//       return;
+//     }
+//     searchTerms.push(searchTerm);
+//     console.log(searchTerms);
+//     $(".searchInput").val('');
+//     React.render(
+//       <SearchTermList />,
+//       document.getElementById('searchTerms')
+//     );
+//   },
+//   render: function() {
+//     return (
+//       <div className="searchBar">
+//         <input className="searchInput" type="text" placeholder="..." />
+//         <div className="addButton" /*onClick={this.addSearchTerm}*/>
+//           <p>go</p>
+//         </div>
+//       </div>
+//     );
+//   }
+// });
 
-React.render(
-  <SearchBar />,
-  document.getElementById('searchBar')
-);
+// React.render(
+//   <SearchBar />,
+//   document.getElementById('searchBar')
+// );
 
 // Search Terms
 var SearchTermList = React.createClass({
