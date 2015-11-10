@@ -1,109 +1,76 @@
 // Mock data kept here for now
 var searchTerms = [];
-var results = [ {"code": "COGS 300: Understanding and Designing Cognitive Systems",
-                  "url": "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=3&dept=COGS&course=300",
-                  "desc": "Theory and methods for integrating diverse disciplinary content in cognitive systems."},
-                {"code": "COGS 303: Research Methods in Cognitive Systems",
-                  "url": "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=3&dept=COGS&course=303",
-                  "desc": "Examination and comparison of the research methodologies of different disciplines relevant to cognitive systems."},
-                {"code": "COGS 401: Seminar in Cognitive Systems",
-                  "url": "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=3&dept=COGS&course=401",
-                  "desc": "Interdisciplinary seminar integrating theory, methods, and current research topics."},
-                {"code": "PSYC 309: Cognitive Processes",
-                  "url": "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=3&dept=PSYC&course=309A",
-                  "desc": "Contribution of cognitive processes to perception, attention, and memory; cognitive development, language, thinking, and creativity."},
-                {"code": "CPSC 322: Introduction to Artificial Intelligence",
-                  "url": "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=3&dept=CPSC&course=322",
-                  "desc": "Problem-solving and planning; state/action models and graph searching. Natural language understanding Computational vision. Applications of artificial intelligence."}
-                  ];
+var results = [ ["CPSC310", 25],
+                ["MATH307", 20],
+                ["GENE549", 15],
+                ["CPSC317", 12],
+                ["MATH302", 5] ];
 
 // Search Bar
-// var SearchBar = React.createClass({
-//   addSearchTerm: function() {
-//     var searchTerm = $(".searchInput").val();
-//     if (!searchTerm) {
-//       alert('Please enter some text before adding a department or course.');
-//       return;
-//     }
-//     searchTerms.push(searchTerm);
-//     console.log(searchTerms);
-//     $(".searchInput").val('');
-//     React.render(
-//       <SearchTermList />,
-//       document.getElementById('searchTerms')
-//     );
-//   },
-//   render: function() {
-//     return (
-//       <div className="searchBar">
-//         <input className="searchInput" type="text" placeholder="..." />
-//         <div className="addButton" /*onClick={this.addSearchTerm}*/>
-//           <p>go</p>
-//         </div>
-//       </div>
-//     );
-//   }
-// });
-
-// React.render(
-//   <SearchBar />,
-//   document.getElementById('searchBar')
-// );
-
-// Search Terms
-var SearchTermList = React.createClass({
-  showResults: function() {
-    React.render(
-      <ResultList />,
-      document.getElementById('results')
-    );
+var SearchBar = React.createClass({
+  getInitialState: function() {
+    return {results: []};
+  },
+  addSearchTerm: function() {
+    var searchTerm = $(".searchInput").val();
+    if (!searchTerm) {
+      alert('Please enter some text before adding a department or course.');
+      return;
+    }
+    searchTerm = searchTerm.replace(" ", "");
+    var invalidLength = searchTerm.length != 7;
+    if (invalidLength) {
+      alert('Please enter a valid 7-character course code (e.g. CPSC110).');
+      return;
+    }
+    var course = searchTerm.slice(0,4);
+    var number = searchTerm.slice(4);
+    console.log(course);
+    console.log(number);
+    $.ajax({
+      url: "search/?course="+course+"&number="+number,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        if (data["results"].length == 0) {
+          alert('Your search returned 0 results. Try another course.');
+        }
+        this.setState({results: data["results"]});
+        $(".searchInput").val(data["course"]+data["number"]);
+      }.bind(this),
+      error: function (xhr, errmsg, err) {
+        alert(err);
+      }
+    });
   },
   render: function() {
-    var searchTermNodes = searchTerms.map(function (searchTerm) {
-      return (
-        <SearchTerm course={searchTerm}></SearchTerm>
-      );
-    });
-    
+    console.log(this.state.results);
     return (
-      <div className="searchTerms">
-        <div className="searchTermList">
-          {searchTermNodes}
+      <div className="searchBar">
+        <input className="searchInput" type="text" placeholder="..." />
+        <div className="addButton" onClick={this.addSearchTerm}>
+          <p>go</p>
         </div>
-        <div className="goButton" onClick={this.showResults}>
-          <p>Go</p>
-        </div>
+        <ResultList results={this.state.results} />
       </div>
     );
   }
 });
-
-var SearchTerm = React.createClass({
-  render: function() {
-    return (
-      <div className="searchTerm">
-        + {this.props.course}
-      </div>
-    );
-  }
-});
-
-React.render(
-  <SearchTermList />,
-  document.getElementById('searchTerms')
-);
 
 // Results
 var ResultList = React.createClass({
   render: function() {
-    var resultNodes = results.map(function (result) {
+    var resultNodes = this.props.results.map(function (result) {
+      var url = "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=3&dept="+result[0].slice(0,4)+"&course="+result[0].slice(4);
       return (
-        <Result code={result.code} url={result.url} desc={result.desc}></Result>
+        <Result code={result[0]} url={url} count={result[1]}></Result>
       );
     });
 
     return (
       <div className="resultList">
+        <div className="codeHeader">Course code</div>
+        <div className="freqHeader">Frequency</div>
         {resultNodes}
       </div>
     );
@@ -114,9 +81,62 @@ var Result = React.createClass({
   render: function() {
     return (
       <div className="result">
-        <h4>{this.props.code} (<a href={this.props.url}>SSC</a>)</h4>
-        <p>{this.props.desc}</p>
+        <h4>{this.props.code} &nbsp; (<a href={this.props.url}>SSC</a>)</h4>
+        <p>{this.props.count}</p>
       </div>
     );
   }
 });
+
+React.render(
+  <SearchBar />,
+  document.getElementById('searchBar')
+);
+
+
+// TODO: CLEAN UP THIS COMMENTED CODE
+
+// // Search Terms
+// var SearchTermList = React.createClass({
+//   showResults: function() {
+//     React.render(
+//       <ResultList />,
+//       document.getElementById('results')
+//     );
+//   },
+//   render: function() {
+//     var searchTermNodes = searchTerms.map(function (searchTerm) {
+//       return (
+//         <SearchTerm course={searchTerm}></SearchTerm>
+//       );
+//     });
+    
+//     return (
+//       <div className="searchTerms">
+//         <div className="searchTermList">
+//           {searchTermNodes}
+//         </div>
+//         <div className="goButton" onClick={this.showResults}>
+//           <p>Go</p>
+//         </div>
+//       </div>
+//     );
+//   }
+// });
+
+// var SearchTerm = React.createClass({
+//   render: function() {
+//     return (
+//       <div className="searchTerm">
+//         + {this.props.course}
+//       </div>
+//     );
+//   }
+// });
+
+// React.render(
+//   <SearchTermList />,
+//   document.getElementById('searchTerms')
+// );
+
+

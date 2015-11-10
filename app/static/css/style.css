@@ -143,13 +143,27 @@ button:focus {
 
 /* Results */
 .resultList {
-  margin: 10px 0 20px 0;
+  margin-top: 50px;
+  width: 100%;
 }
 
-.result {
-  margin-top: 20px;
+.result { 
+  width: 100%;
+  font-weight: 300;
 }
 
+.result p {
+  float: right;
+  font-weight: 300;
+}
 .result h4 {
   color: #2e65a0;
+}
+
+.codeHeader {
+  float: left;
+}
+
+.freqHeader {
+  float: right;
 }
