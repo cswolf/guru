@@ -14,13 +14,13 @@ var SearchBar = React.createClass({
   addSearchTerm: function() {
     var searchTerm = $(".searchInput").val();
     if (!searchTerm) {
-      alert('Please enter some text before adding a department or course.');
+      alert('Please enter a course code (e.g. MATH307).');
       return;
     }
     searchTerm = searchTerm.replace(" ", "");
     var invalidLength = searchTerm.length != 7;
     if (invalidLength) {
-      alert('Please enter a valid 7-character course code (e.g. CPSC110).');
+      alert('Please enter a valid 7-character course code (e.g. MATH307).');
       return;
     }
     var course = searchTerm.slice(0,4);
