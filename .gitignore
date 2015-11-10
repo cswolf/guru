@@ -1,4 +1,5 @@
 *~
 *.pyc
 .Python
+guruvenv
 .DS_Store
