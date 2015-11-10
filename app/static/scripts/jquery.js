@@ -23,7 +23,7 @@ $(function() {
     		alert("hey");
     	},
       error: function (xhr, errmsg, err) {
-        alert("yo");
+        alert(err);
       }
     });
 	});
