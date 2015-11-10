@@ -14,12 +14,17 @@ $(function() {
     }
     var course = searchTerm.slice(0,4);
     var number = searchTerm.slice(4);
+    console.log(course);
+    console.log(number);
     $.ajax({
-    	url: "search?course="+course+"&number="+number,
-    	method: "GET",
+    	url: "search/?course="+course+"&number="+number,
+    	type: "GET",
     	success: function (data) {
     		alert("hey");
-    	}
+    	},
+      error: function (xhr, errmsg, err) {
+        alert("yo");
+      }
     });
 	});
   
