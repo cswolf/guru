@@ -29,8 +29,9 @@ def query(request):
     # to_number = int(regex.sub('', to_code))
     # if to_number >= 300:
     scores[to_code] = sim.score
+    number=sim.score
 
-  results = scores#sorted(scores.items(), key=lambda x: x[1], reverse=True)
+  results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     
   ### DONE: PCA ###
 
