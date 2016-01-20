@@ -44,7 +44,6 @@ U, s, V = numpy.linalg.svd(matrix)
 
 # Zero out all but first k values of s
 k = 5
-
 for i in range(k, len(s)):
   s[i] = 0
 
@@ -58,8 +57,6 @@ m_prime = numpy.dot(U, numpy.dot(S, V))
 
 # First, set c_raw up as M^T M.
 c_raw = numpy.dot(m_prime.T, m_prime)
-
-# Next, pull out the norms
 
 # Get the diagonal. (Note: can remove small numbers w/code below.)
 cdiag_sqrt = numpy.sqrt(numpy.diag(c_raw))
