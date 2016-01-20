@@ -23,7 +23,10 @@ def query(request):
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
   
+  count = 0
+
   for sim in sims:
+    count += 1
     # regex = re.compile(r'[^\d]+')
     to_code = Course.objects.filter(unique_id=sim.unique_id)[0].code
     # to_number = int(regex.sub('', to_code))
@@ -58,6 +61,6 @@ def query(request):
   res = {}
   # res['course'] = course.upper()
   res['course'] = course
-  res['number'] = number
+  res['number'] = count #number
   res['results'] = results
   return HttpResponse(json.dumps(res))
