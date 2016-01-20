@@ -19,18 +19,16 @@ def query(request):
   # get key for given course
   code = course + str(number)
   course_key = Course.objects.filter(code=code)
-  # all similarity ids with given course key as from_class
-  simIds = [similarity.id for similarity in Similarity.objects.filter(from_class=course_key)]
-  
+
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
   
   for sim in sims:
     regex = re.compile(r'[^\d]+')
     to_code = Course.objects.filter(code=sim.to_class)
-    to_number = int(regex.sub('', to_code))
-    if to_number >= 300:
-      scores[to_code] = sim.score
+    # to_number = int(regex.sub('', to_code))
+    # if to_number >= 300:
+    scores[to_code] = sim.score
 
   results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     
