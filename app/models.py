@@ -10,3 +10,13 @@ class Enrolment(models.Model):
   class Meta:
     managed = False
     db_table = 'enrolment'
+
+class Similarity(models.Model):
+  unique_id = models.AutoField(primary_key=True)
+  from_class = models.FloatField()
+  to_class = models.FloatField()
+  score = models.FloatField()
+    
+  class Meta:
+    managed = False
+    db_table = 'similarity'
