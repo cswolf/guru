@@ -12,10 +12,8 @@ def query(request):
   number = request.GET.get('number')
 
   # get key for given course
-  code = course + number
-  course_key = Course.objects.filter(code=code)
-
-
+  # code = course + number
+  # course_key = Course.objects.filter(code=code)
 
   counts = {}
   # all student ids from enrolments with given class
