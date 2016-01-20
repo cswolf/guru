@@ -12,8 +12,8 @@ def query(request):
   number = request.GET.get('number')
 
   # get key for given course
-  # code = course + number
-  # course_key = Course.objects.filter(code=code)
+  code = course + str(number)
+  course_key = Course.objects.filter(code=code)
 
   counts = {}
   # all student ids from enrolments with given class
@@ -37,5 +37,5 @@ def query(request):
   # res['course'] = course.upper()
   res['course'] = course
   res['number'] = number
-  res['results'] = results
+  res['results'] = code
   return HttpResponse(json.dumps(res))
