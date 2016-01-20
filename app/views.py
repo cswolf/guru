@@ -29,7 +29,8 @@ def query(request):
     # to_number = int(regex.sub('', to_code))
     # if to_number >= 300:
     scores[to_code] = sim.score
-    number=sim.score
+    course = to_code
+    number = sim.score
 
   results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     
@@ -58,5 +59,5 @@ def query(request):
   # res['course'] = course.upper()
   res['course'] = course
   res['number'] = number
-  res['results'] = scores
+  res['results'] = results
   return HttpResponse(json.dumps(res))
