@@ -44,7 +44,7 @@ var SearchBar = React.createClass({
     });
   },
   render: function() {
-    console.log(this.state.course);
+    console.log(this.state.results);
     return (
       <div className="searchBar">
         <input className="searchInput" type="text" placeholder="..." />
