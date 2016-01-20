@@ -20,3 +20,11 @@ class Similarity(models.Model):
   class Meta:
     managed = False
     db_table = 'similarity'
+
+class Courses(models.Model):
+  unique_id = models.AutoField(primary_key=True)
+  code = models.CharField(max_length=10)
+  
+  class Meta:
+    managed = False
+    db_table = 'courses'
