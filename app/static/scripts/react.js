@@ -25,8 +25,7 @@ var SearchBar = React.createClass({
     }
     var course = searchTerm.slice(0,4);
     var number = searchTerm.slice(4);
-    console.log(course);
-    console.log(number);
+    
     $.ajax({
       url: "search/?course="+course+"&number="+number,
       type: "GET",
@@ -44,6 +43,8 @@ var SearchBar = React.createClass({
     });
   },
   render: function() {
+    console.log(this.state.course);
+    console.log(this.state.number);
     console.log(this.state.results);
     return (
       <div className="searchBar">
