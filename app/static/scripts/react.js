@@ -44,7 +44,7 @@ var SearchBar = React.createClass({
     });
   },
   render: function() {
-    console.log(this.state.results);
+    console.log(this.state.course);
     return (
       <div className="searchBar">
         <input className="searchInput" type="text" placeholder="..." />
@@ -92,51 +92,3 @@ React.render(
   <SearchBar />,
   document.getElementById('searchBar')
 );
-
-
-// TODO: CLEAN UP THIS COMMENTED CODE
-
-// // Search Terms
-// var SearchTermList = React.createClass({
-//   showResults: function() {
-//     React.render(
-//       <ResultList />,
-//       document.getElementById('results')
-//     );
-//   },
-//   render: function() {
-//     var searchTermNodes = searchTerms.map(function (searchTerm) {
-//       return (
-//         <SearchTerm course={searchTerm}></SearchTerm>
-//       );
-//     });
-    
-//     return (
-//       <div className="searchTerms">
-//         <div className="searchTermList">
-//           {searchTermNodes}
-//         </div>
-//         <div className="goButton" onClick={this.showResults}>
-//           <p>Go</p>
-//         </div>
-//       </div>
-//     );
-//   }
-// });
-
-// var SearchTerm = React.createClass({
-//   render: function() {
-//     return (
-//       <div className="searchTerm">
-//         + {this.props.course}
-//       </div>
-//     );
-//   }
-// });
-
-// React.render(
-//   <SearchTermList />,
-//   document.getElementById('searchTerms')
-// );
-
-
