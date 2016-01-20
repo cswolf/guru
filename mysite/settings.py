@@ -83,6 +83,9 @@ DATABASES = {
     'PASSWORD': 'gurudb',
     'HOST': 'jianbai.mysql.pythonanywhere-services.com',
     'PORT': '',
+    'OPTIONS' : {
+      'local_infile':1,
+    },
   }
 }
 
