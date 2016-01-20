@@ -30,10 +30,8 @@ def query(request):
     # if to_number >= 300:
     scores[to_code] = sim.score
 
-  results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+  results = scores#sorted(scores.items(), key=lambda x: x[1], reverse=True)
     
-
-
   ### DONE: PCA ###
 
   ### Frequency counting ###
