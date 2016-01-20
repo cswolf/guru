@@ -24,8 +24,8 @@ def query(request):
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
   
   for sim in sims:
-    regex = re.compile(r'[^\d]+')
-    to_code = Course.objects.filter(code=sim.to_class)
+    # regex = re.compile(r'[^\d]+')
+    to_code = Course.objects.filter(unique_id=sim.unique_id)[0].code
     # to_number = int(regex.sub('', to_code))
     # if to_number >= 300:
     scores[to_code] = sim.score
