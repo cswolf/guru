@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Enrolment
+from .models import Course
+from .models import Similarity
 import json
 
 # Create your views here.
