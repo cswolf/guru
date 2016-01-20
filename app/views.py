@@ -18,7 +18,7 @@ def query(request):
   scores = {}
   # get key for given course
   code = course + str(number)
-  course_key = Course.objects.filter(code=code)
+  course_key = Course.objects.filter(code=code)[0].unique_id
 
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
