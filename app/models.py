@@ -21,7 +21,7 @@ class Similarity(models.Model):
     managed = False
     db_table = 'similarity'
 
-class Courses(models.Model):
+class Course(models.Model):
   unique_id = models.AutoField(primary_key=True)
   code = models.CharField(max_length=10)
   
