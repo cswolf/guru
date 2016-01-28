@@ -88,9 +88,6 @@ button:focus {
   height: 40px;
 }
 
-.searchBar input {
-}
-
 .searchInput {
   width: 100%;
   padding-left: 10px;
@@ -115,8 +112,8 @@ button:focus {
   top: 4px;
 }
 
-.excludeCS * {
-  display: inline-block;
+.exLabel {
+  line-height: 40px;
 }
 
 /* Search Terms */
