@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Enrolment
 from .models import Course
 from .models import Similarity
+from .models import Shit
 import json
 import re
 
