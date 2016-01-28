@@ -13,6 +13,7 @@ def search(request):
 def query(request):
   course = request.GET.get('course')
   number = request.GET.get('number')
+  excl = int(request.GET.get('excl'))
 
   ### PCA ###
   scores = {}
@@ -29,8 +30,13 @@ def query(request):
     to_code = Course.objects.filter(unique_id=to_unique_id).first().code
     regex = re.compile(r'[^\d]+')
     to_number = int(regex.sub('', to_code))
-    if to_number >= 300:
-      scores[to_code] = score
+    regex = re.compile(r'[\d]+')
+    to_dept = regex.sub('', to_code)
+    under_300 = to_number < 300
+    exclude_CS = excl and to_dept is 'CPSC'
+    if under_300 or exclude_CS:
+      continue
+    scores[to_code] = score
   results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
   ### DONE: PCA ###
 
