@@ -18,14 +18,14 @@ def query(request):
   scores = {}
   # get key for given course
   code = course + str(number)
-  course_key = Course.objects
+  course_key = Course.objects.filter(code=code)
   ### DONE: PCA ###
 
   res = {}
   # res['course'] = course.upper()
   res['course'] = code #course
   res['number'] = number #count
-  res['results'] = course_key #results
+  res['results'] = [] #results
   return HttpResponse(json.dumps(res))
 
 '''
