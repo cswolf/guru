@@ -34,8 +34,8 @@ def query(request):
 
   res = {}
   # res['course'] = course.upper()
-  res['course'] = code #course
-  res['number'] = number #count
+  res['course'] = course
+  res['number'] = number
   res['results'] = results
   return HttpResponse(json.dumps(res))
 

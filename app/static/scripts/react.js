@@ -35,7 +35,7 @@ var SearchBar = React.createClass({
           alert('Your search returned 0 results. Try another course.');
         }
         this.setState({results: data["results"]});
-        $(".searchInput").val(data["course"]);
+        $(".searchInput").val(data["course"]+data["number"]);
       }.bind(this),
       error: function (xhr, errmsg, err) {
         alert(err);
