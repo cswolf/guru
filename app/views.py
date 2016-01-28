@@ -24,8 +24,6 @@ def query(request):
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
   for sim in sims:
-    if len(scores.items()) >= 20:
-      break
     score = sim.score
     # add 1 back since Course table is zero indexed
     to_unique_id = sim.to_class + 1
@@ -37,7 +35,7 @@ def query(request):
     if under_300 or exclude_CS:
       continue
     scores[to_code] = score
-  results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+  results = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:15]
   ### DONE: PCA ###
 
   res = {}
