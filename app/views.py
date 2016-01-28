@@ -21,16 +21,14 @@ def query(request):
   course_key = Course.objects.filter(code__startswith=code).first().unique_id
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
-  count = 0
   for sim in sims:
-    count += 1
-    # regex = re.compile(r'[^\d]+')
-    # to_code = Course.objects.filter(unique_id=sim.unique_id)[0].code
-    # to_number = int(regex.sub('', to_code))
-    # if to_number >= 300:
-    # scores[to_code] = sim.score
-    # course = to_code
-    # number = sim.score
+    score = sim.score
+    to_unique_id = sim.toclass
+    to_code = Course.objects.filter(unique_id=to_unique_id).first().code
+    regex = re.compile(r'[^\d]+')
+    to_number = int(regex.sub('', to_code))
+    if to_number >= 300:
+      scores[to_code] = score
   ### DONE: PCA ###
 
   res = {}
@@ -39,6 +37,14 @@ def query(request):
   res['number'] = number #count
   res['results'] = count #results
   return HttpResponse(json.dumps(res))
+
+# regex = re.compile(r'[^\d]+')
+    # to_code = Course.objects.filter(unique_id=sim.unique_id)[0].code
+    # to_number = int(regex.sub('', to_code))
+    # if to_number >= 300:
+    # scores[to_code] = sim.score
+    # course = to_code
+    # number = sim.score
 
 '''
   # create a query set
