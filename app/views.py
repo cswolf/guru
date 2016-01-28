@@ -35,7 +35,7 @@ def query(request):
     if under_300 or exclude_CS:
       continue
     scores[to_code] = score
-  results = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:15]
+  results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
   ### DONE: PCA ###
 
   res = {}
@@ -44,33 +44,6 @@ def query(request):
   res['number'] = number
   res['results'] = results
   return HttpResponse(json.dumps(res))
-
-# regex = re.compile(r'[^\d]+')
-    # to_code = Course.objects.filter(unique_id=sim.unique_id)[0].code
-    # to_number = int(regex.sub('', to_code))
-    # if to_number >= 300:
-    # scores[to_code] = sim.score
-    # course = to_code
-    # number = sim.score
-
-'''
-  # create a query set
-  sims = Similarity.objects.filter(from_class=course_key.unique_id).exclude(to_class=course_key.unique_id)
-  
-  count = 0
-
-  for sim in sims:
-    count += 1
-    # regex = re.compile(r'[^\d]+')
-    to_code = Course.objects.filter(unique_id=sim.unique_id)[0].code
-    # to_number = int(regex.sub('', to_code))
-    # if to_number >= 300:
-    scores[to_code] = sim.score
-    course = to_code
-    number = sim.score
-
-  results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-'''
 
   ### Frequency counting ###
   # counts = {}
