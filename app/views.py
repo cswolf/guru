@@ -34,9 +34,10 @@ def query(request):
     to_dept = regex.sub('', to_code)
     under_300 = to_number < 300
     exclude_CS = excl and to_dept == 'CPSC'
-    if excl:
-      continue
-    scores[to_code] = score
+    # if excl:
+    #   continue
+    # scores[to_code] = score
+    scores[to_dept] = score
   results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
   ### DONE: PCA ###
 
