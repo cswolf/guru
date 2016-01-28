@@ -112,6 +112,10 @@ button:focus {
   top: 4px;
 }
 
+.excludeCS {
+  display: inline-block;
+}
+
 /* Search Terms */
 
 .searchBy {
