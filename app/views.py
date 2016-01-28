@@ -37,7 +37,9 @@ def query(request):
     # if excl:
     #   continue
     #scores[to_code] = score
-    scores[to_dept] = score
+    if under_300:
+      continue
+    scores[to_number] = score
   results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
   ### DONE: PCA ###
 
