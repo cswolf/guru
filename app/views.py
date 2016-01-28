@@ -19,6 +19,13 @@ def query(request):
   # get key for given course
   code = course + str(number)
   course_key = Course.objects.filter(code=code).first()
+  res = {}
+  # res['course'] = course.upper()
+  res['course'] = course #code
+  res['number'] = number #count
+  res['results'] = {} #results
+  return HttpResponse(json.dumps(res))
+
 '''
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key.unique_id).exclude(to_class=course_key.unique_id)
@@ -57,9 +64,3 @@ def query(request):
   # # sort by descending count
   # results = sorted(counts.items(), key=lambda x: x[1], reverse=True)
   ### DONE: Frequency counting ###
-  res = {}
-  # res['course'] = course.upper()
-  res['course'] = course #code
-  res['number'] = number #count
-  res['results'] = {} #results
-  return HttpResponse(json.dumps(res))
