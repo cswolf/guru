@@ -21,7 +21,7 @@ def query(request):
   course_key = Course.objects.filter(code__startswith=code).first().unique_id
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
-  count = 0
+  count = 8
   for sim in sims:
     # score = sim.score
     # to_unique_id = sim.to_class
