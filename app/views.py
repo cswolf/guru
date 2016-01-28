@@ -23,7 +23,7 @@ def query(request):
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
   for sim in sims:
     score = sim.score
-    to_unique_id = sim.toclass
+    to_unique_id = sim.to_class
     to_code = Course.objects.filter(unique_id=to_unique_id).first().code
     regex = re.compile(r'[^\d]+')
     to_number = int(regex.sub('', to_code))
