@@ -29,7 +29,7 @@ var SearchBar = React.createClass({
     if ($(".exBox").is(":checked")) {
       var excl = '1'
     }
-
+    console.log(excl)
     $.ajax({
       url: "search/?excl="+excl+"&course="+course+"&number="+number,
       type: "GET",
