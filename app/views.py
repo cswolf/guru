@@ -20,7 +20,7 @@ def query(request):
   code = course.upper() + str(number)
   course_key = Course.objects.filter(code__startswith=code).first().unique_id
   x = 664
-  sims = Similarity.objects.filter(from_class=unique_id)
+  sims = Similarity.objects.filter(from_class=course_key)
   ### DONE: PCA ###
 
   res = {}
