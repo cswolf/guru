@@ -30,10 +30,8 @@ def query(request):
     to_code = Course.objects.filter(unique_id=to_unique_id).first().code
     regex = re.compile(r'[^\d]+')
     to_number = int(regex.sub('', to_code))
-    regex = re.compile(r'[\d]+')
-    to_dept = regex.sub('', to_code)
     under_300 = to_number < 300
-    exclude_CS = excl and to_dept == 'CPSC'
+    exclude_CS = excl and to_code.startswith('CPSC')
     if under_300 or to_dept=='CPSC':
       continue
     scores[to_code] = score
