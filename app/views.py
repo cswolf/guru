@@ -18,7 +18,7 @@ def query(request):
   scores = {}
   # get key for given course
   code = course + str(number)
-  course_key = Course.objects.all()
+  course_key = Course.objects
   ### DONE: PCA ###
 
   res = {}
