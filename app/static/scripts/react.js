@@ -71,7 +71,7 @@ var ResultList = React.createClass({
     return (
       <div className="resultList">
         <div className="codeHeader">Course code</div>
-        <div className="freqHeader">Frequency</div>
+        <div className="freqHeader">Cosine Similarity</div>
         {resultNodes}
       </div>
     );
