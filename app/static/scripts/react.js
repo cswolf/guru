@@ -42,7 +42,7 @@ var SearchBar = React.createClass({
       }
     });
   },
-  handleKeyPress: function() {
+  handleKeyPress: function(e) {
     if (e.key === 'Enter') {
       console.log('HEY BITCH');
     } else {
