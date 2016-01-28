@@ -36,8 +36,8 @@ def query(request):
     exclude_CS = excl and to_dept == 'CPSC'
     # if excl:
     #   continue
-    # scores[to_code] = score
-    scores[to_dept] = score
+    scores[to_code] = score
+    #scores[to_dept] = score
   results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
   ### DONE: PCA ###
 
