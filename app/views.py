@@ -18,7 +18,7 @@ def query(request):
   scores = {}
   # get key for given course
   code = course + str(number)
-  c = '%MATH200%'
+  c = 'MATH200%'
   course_key = Course.objects.filter(code=c)
   ### DONE: PCA ###
 
