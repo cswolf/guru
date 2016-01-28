@@ -43,15 +43,12 @@ var SearchBar = React.createClass({
     });
   },
   handleKeyUp: function(e) {
-    console.log('UP');
     if (e.key === 'Enter') {
       this.addSearchTerm();
     }
   },
   render: function() {
-    console.log(this.state.course);
-    console.log(this.state.number);
-    console.log(this.state.results);
+    // console.log(this.state.results);
     return (
       <div className="searchBar">
         <input className="searchInput" type="text" placeholder="..." onKeyUp={this.handleKeyUp}/>
