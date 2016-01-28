@@ -24,7 +24,7 @@ def query(request):
   for sim in sims:
     score = sim.score
     to_unique_id = sim.to_class + 1
-    to_code = Course.objects.filter(unique_id=to_unique_id).code
+    to_code = Course.objects.filter(unique_id=to_unique_id).first().code
     regex = re.compile(r'[^\d]+')
     to_number = int(regex.sub('', to_code))
     if to_number >= 300:
