@@ -18,7 +18,7 @@ def query(request):
   scores = {}
   # get key for given course
   code = course.upper() + str(number)
-  course_key = Course.objects.filter(code__startswith=code).first()
+  course_key = Course.objects.filter(code__startswith=code).first().unique_id
   ### DONE: PCA ###
 
   res = {}
