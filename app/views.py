@@ -18,11 +18,13 @@ def query(request):
   scores = {}
   # get key for given course
   code = course.upper() + str(number)
-  course_key = Course.objects.filter(code__startswith=code).first().unique_id
+  # subtract 1 since Course table is zero indexed
+  course_key = Course.objects.filter(code__startswith=code).first().unique_id - 1
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
   for sim in sims:
     score = sim.score
+    # add 1 back since Course table is zero indexed
     to_unique_id = sim.to_class + 1
     to_code = Course.objects.filter(unique_id=to_unique_id).first().code
     regex = re.compile(r'[^\d]+')
