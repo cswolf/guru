@@ -19,7 +19,7 @@ def query(request):
   # get key for given course
   code = course + str(number)
   course_key = Course.objects.filter(code=code).first()
-
+'''
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key.unique_id).exclude(to_class=course_key.unique_id)
   
@@ -36,7 +36,7 @@ def query(request):
     number = sim.score
 
   results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-    
+'''
   ### DONE: PCA ###
 
   ### Frequency counting ###
@@ -60,7 +60,7 @@ def query(request):
 
   res = {}
   # res['course'] = course.upper()
-  res['course'] = course
-  res['number'] = count #number
-  res['results'] = results
+  res['course'] = course #code
+  res['number'] = number #count
+  res['results'] = {} #results
   return HttpResponse(json.dumps(res))
