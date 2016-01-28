@@ -57,7 +57,7 @@ var SearchBar = React.createClass({
         </div>
         <div className="excludeCS">
           <input className="exBox" type="checkbox"/>
-          <div>Exclude CPSC courses</div>
+          <label>Exclude CPSC courses</label>
         </div>
         <ResultList results={this.state.results} />
       </div>
