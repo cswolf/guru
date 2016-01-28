@@ -88,7 +88,7 @@ var Result = React.createClass({
   render: function() {
     return (
       <div className="result">
-        <h4>{this.props.code} &nbsp; (<a href={this.props.url}>SSC</a>)</h4>
+        <h4>{this.props.code} &nbsp; (<a href={this.props.url} target="_blank">SSC</a>)</h4>
         <p>{this.props.count}</p>
       </div>
     );
