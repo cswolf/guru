@@ -112,7 +112,7 @@ button:focus {
   top: 4px;
 }
 
-.excludeCS {
+.excludeCS * {
   display: inline-block;
 }
 
