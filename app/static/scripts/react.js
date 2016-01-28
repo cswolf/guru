@@ -26,7 +26,7 @@ var SearchBar = React.createClass({
     var course = searchTerm.slice(0,4);
     var number = searchTerm.slice(4);
     
-    if (%(".exBox").is(":checked")) {
+    if ($(".exBox").is(":checked")) {
       console.log("IS CHECKED");
     }
 
