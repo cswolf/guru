@@ -42,7 +42,16 @@ var SearchBar = React.createClass({
       }
     });
   },
+  handleKeyDown: function(e) {
+    console.log('DOWN');
+    console.log('key: ' + e.key);
+    console.log('keycode: ' + e.keycode);
+  },
+  handleKeyUp: function(e) {
+    console.log('UP');
+  },
   handleKeyPress: function(e) {
+    console.log('PRESS');
     if (e.key === 'Enter') {
       console.log('HEY BITCH');
     } else {
@@ -55,8 +64,8 @@ var SearchBar = React.createClass({
     console.log(this.state.results);
     return (
       <div className="searchBar">
-        <input className="searchInput" type="text" placeholder="..." />
-        <div className="addButton" onClick={this.addSearchTerm} onKeyDown={this.handleKeyPress}>
+        <input className="searchInput" type="text" placeholder="..." onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} onKeyPress={this.handleKeyPress}/>
+        <div className="addButton" onClick={this.addSearchTerm}>
           <p>go</p>
         </div>
         <ResultList results={this.state.results} />
