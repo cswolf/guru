@@ -17,7 +17,7 @@ def query(request):
   ### PCA ###
   scores = {}
   # get key for given course
-  code = course + str(number)
+  code = course.upper() + str(number)
   course_key = Course.objects.filter(code__startswith=code).first()
   ### DONE: PCA ###
 
