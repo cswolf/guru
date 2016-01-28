@@ -18,12 +18,14 @@ def query(request):
   scores = {}
   # get key for given course
   code = course + str(number)
-  course_key = Course.objects.filter(code=code).first()
+  course_key = Course.objects.all()
+  ### DONE: PCA ###
+
   res = {}
   # res['course'] = course.upper()
   res['course'] = code #course
   res['number'] = number #count
-  res['results'] = [] #results
+  res['results'] = course_key #results
   return HttpResponse(json.dumps(res))
 
 '''
@@ -44,7 +46,6 @@ def query(request):
 
   results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 '''
-  ### DONE: PCA ###
 
   ### Frequency counting ###
   # counts = {}
