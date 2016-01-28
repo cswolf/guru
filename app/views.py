@@ -29,7 +29,6 @@ def query(request):
     to_number = int(regex.sub('', to_code))
     if to_number >= 300:
       scores[to_code] = score
-    break
   count = len(scores.items())
   ### DONE: PCA ###
 
