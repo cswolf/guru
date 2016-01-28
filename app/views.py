@@ -32,7 +32,7 @@ def query(request):
     to_number = int(regex.sub('', to_code))
     under_300 = to_number < 300
     exclude_CS = excl and to_code.startswith('CPSC')
-    if under_300 or to_dept=='CPSC':
+    if under_300 or exclude_CS:
       continue
     scores[to_code] = score
   results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
