@@ -21,9 +21,9 @@ def query(request):
   course_key = Course.objects.filter(code=code).first()
   res = {}
   # res['course'] = course.upper()
-  res['course'] = course #code
+  res['course'] = code #course
   res['number'] = number #count
-  res['results'] = {} #results
+  res['results'] = [] #results
   return HttpResponse(json.dumps(res))
 
 '''
