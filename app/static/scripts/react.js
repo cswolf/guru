@@ -25,13 +25,13 @@ var SearchBar = React.createClass({
     }
     var course = searchTerm.slice(0,4);
     var number = searchTerm.slice(4);
-    
+    var excl = '0'
     if ($(".exBox").is(":checked")) {
-      console.log("IS CHECKED");
+      var excl = '1'
     }
 
     $.ajax({
-      url: "search/?course="+course+"&number="+number,
+      url: "search/?excl="+excl+"&course="+course+"&number="+number,
       type: "GET",
       dataType: "json",
       success: function (data) {
