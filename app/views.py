@@ -24,7 +24,7 @@ def query(request):
   count = 8
   for sim in sims:
     score = sim.score
-    to_unique_id = sim.to_class
+    to_unique_id = sim.to_class + 1
     to_code = Course.objects.filter(unique_id=to_unique_id)
     count = to_code
     # regex = re.compile(r'[^\d]+')
