@@ -29,14 +29,14 @@ def query(request):
     to_number = int(regex.sub('', to_code))
     if to_number >= 300:
       scores[to_code] = score
-  count = len(scores.items())
+  results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
   ### DONE: PCA ###
 
   res = {}
   # res['course'] = course.upper()
   res['course'] = code #course
   res['number'] = number #count
-  res['results'] = count #results
+  res['results'] = results
   return HttpResponse(json.dumps(res))
 
 # regex = re.compile(r'[^\d]+')
