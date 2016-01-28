@@ -19,15 +19,25 @@ def query(request):
   # get key for given course
   code = course.upper() + str(number)
   course_key = Course.objects.filter(code__startswith=code).first().unique_id
-  x = 664
-  sims = Similarity.objects.filter(from_class=course_key).filter(to_class=x)
+  # create a query set
+  sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
+  count = 0
+  for sim in sims:
+    count += 1
+    # regex = re.compile(r'[^\d]+')
+    # to_code = Course.objects.filter(unique_id=sim.unique_id)[0].code
+    # to_number = int(regex.sub('', to_code))
+    # if to_number >= 300:
+    # scores[to_code] = sim.score
+    # course = to_code
+    # number = sim.score
   ### DONE: PCA ###
 
   res = {}
   # res['course'] = course.upper()
   res['course'] = code #course
   res['number'] = number #count
-  res['results'] = sims #results
+  res['results'] = count #results
   return HttpResponse(json.dumps(res))
 
 '''
