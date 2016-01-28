@@ -55,7 +55,7 @@ var SearchBar = React.createClass({
         <div className="addButton" onClick={this.addSearchTerm}>
           <p>go</p>
         </div>
-        <input className="includeCS" type="checkbox" checked>
+        <input className="includeCS" type="checkbox" checked/>
         <ResultList results={this.state.results} />
       </div>
     );
