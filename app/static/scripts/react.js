@@ -56,7 +56,7 @@ var SearchBar = React.createClass({
     return (
       <div className="searchBar">
         <input className="searchInput" type="text" placeholder="..." />
-        <div className="addButton" onClick={this.addSearchTerm} onKeyPress={this.handleKeyPress}>
+        <div className="addButton" onClick={this.addSearchTerm} onKeyDown={this.handleKeyPress}>
           <p>go</p>
         </div>
         <ResultList results={this.state.results} />
