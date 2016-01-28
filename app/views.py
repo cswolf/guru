@@ -19,13 +19,15 @@ def query(request):
   # get key for given course
   code = course.upper() + str(number)
   course_key = Course.objects.filter(code__startswith=code).first().unique_id
+  x = 664
+  sims = Similarity.objects.filter(from_class=unique_id)
   ### DONE: PCA ###
 
   res = {}
   # res['course'] = course.upper()
   res['course'] = code #course
   res['number'] = number #count
-  res['results'] = course_key #results
+  res['results'] = sims #results
   return HttpResponse(json.dumps(res))
 
 '''
