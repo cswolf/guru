@@ -1,10 +1,10 @@
-// Mock data kept here for now
-var searchTerms = [];
-var results = [ ["CPSC310", 25],
-                ["MATH307", 20],
-                ["GENE549", 15],
-                ["CPSC317", 12],
-                ["MATH302", 5] ];
+// // Mock data kept here for now
+// var searchTerms = [];
+// var results = [ ["CPSC310", 25],
+//                 ["MATH307", 20],
+//                 ["GENE549", 15],
+//                 ["CPSC317", 12],
+//                 ["MATH302", 5] ];
 
 // Search Bar
 var SearchBar = React.createClass({
@@ -26,6 +26,10 @@ var SearchBar = React.createClass({
     var course = searchTerm.slice(0,4);
     var number = searchTerm.slice(4);
     
+    if (%(".exBox").is(":checked")) {
+      console.log("IS CHECKED");
+    }
+
     $.ajax({
       url: "search/?course="+course+"&number="+number,
       type: "GET",

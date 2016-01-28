@@ -114,6 +114,7 @@ button:focus {
 
 .exLabel {
   line-height: 40px;
+  margin-left: 10px;
 }
 
 /* Search Terms */
