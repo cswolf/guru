@@ -22,8 +22,8 @@ def query(request):
   # subtract 1 since Course table is zero indexed
   course_key = Course.objects.filter(code__startswith=code).first().unique_id - 1
   keys = {}
-  for course in Course.objects.all():
-    keys[course.unique_id] = course.code
+  for c in Course.objects.all():
+    keys[c.unique_id] = c.code
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
   regex = re.compile(r'[^\d]+')
