@@ -11,19 +11,24 @@ def search(request):
   return render(request, 'search.html', {})
 
 def query(request):
-  course = request.GET.get('course')
+  course = request.GET.get('course').upper()
   number = request.GET.get('number')
   excl = int(request.GET.get('excl'))
 
   ### PCA ###
   scores = {}
   # get key for given course
-  code = course.upper() + str(number)
+  code = course + str(number)
   # subtract 1 since Course table is zero indexed
-  course_key = Course.objects.filter(code__startswith=code).first().unique_id - 1
+  # course_key = Course.objects.filter(code__startswith=code).first().unique_id - 1
+  course_key = 0
   keys = {}
   for c in Course.objects.all():
-    keys[c.unique_id] = c.code
+    c_key = c.unique_id
+    c_code = c.code
+    if c_code.startswith(code):
+      course_key = c_key
+    keys[c_key] = c_code
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
   regex = re.compile(r'[^\d]+')
@@ -44,8 +49,7 @@ def query(request):
   ### DONE: PCA ###
 
   res = {}
-  # res['course'] = course.upper()
-  res['course'] = course.upper()
+  res['course'] = course
   res['number'] = number
   res['results'] = results
   return HttpResponse(json.dumps(res))
