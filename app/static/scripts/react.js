@@ -40,8 +40,10 @@ var SearchBar = React.createClass({
         }
         if (data["results"][0] == -1) {
           alert("Oops! " + data["course"] + data["number"] + " is not a valid course code. Try another course.");
+          this.setState({results: []});
+        } else {
+          this.setState({results: data["results"]});  
         }
-        this.setState({results: data["results"]});
         $(".searchInput").val(data["course"]+data["number"]);
       }.bind(this),
       error: function (xhr, errmsg, err) {
