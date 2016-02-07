@@ -21,7 +21,7 @@ def query(request):
   code = course + str(number)
   # subtract 1 since Course table is zero indexed
   # course_key = Course.objects.filter(code__startswith=code).first().unique_id - 1
-  course_key = 0
+  course_key = -1
   keys = {}
   for c in Course.objects.all():
     c_key = c.unique_id
@@ -29,6 +29,12 @@ def query(request):
     if c_code.startswith(code):
       course_key = c_key
     keys[c_key] = c_code
+  if course_key < 0:
+    res = {}
+    res['course'] = course
+    res['number'] = number
+    res['results'] = results
+    return HttpResponse(json.dumps(res))
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
   regex = re.compile(r'[^\d]+')
