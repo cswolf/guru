@@ -29,7 +29,6 @@ var SearchBar = React.createClass({
     if ($(".exBox").is(":checked")) {
       var excl = '1'
     }
-    console.log(excl)
     $.ajax({
       url: "search/?excl="+excl+"&course="+course+"&number="+number,
       type: "GET",
@@ -78,7 +77,9 @@ var SearchBar = React.createClass({
 var ResultList = React.createClass({
   render: function() {
     var resultNodes = this.props.results.map(function (result) {
-      var url = "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=3&dept="+result[0].slice(0,4)+"&course="+result[0].slice(4);
+      var dept = result[0].replace(/[0-9]/g, '');
+      var course = result[0].replace(/\D/g, '');
+      var url = "https://courses.students.ubc.ca/cs/main?pname=subjarea&tname=subjareas&req=3&dept="+dept+"&course="+course;
       return (
         <Result code={result[0]} url={url} count={result[1]}></Result>
       );
