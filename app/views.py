@@ -33,7 +33,7 @@ def query(request):
     res = {}
     res['course'] = course
     res['number'] = number
-    res['results'] = results
+    res['results'] = []
     return HttpResponse(json.dumps(res))
   # create a query set
   sims = Similarity.objects.filter(from_class=course_key).exclude(to_class=course_key)
