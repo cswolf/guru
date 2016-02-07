@@ -36,7 +36,10 @@ var SearchBar = React.createClass({
       dataType: "json",
       success: function (data) {
         if (data["results"].length == 0) {
-          alert('Your search returned 0 results. Try another course.');
+          alert("Your search returned 0 results. Try another course.");
+        }
+        if (data["results"][0] == -1) {
+          alert("Oops! " + data["course"] + data["number"] + " is not a valid course code. Try another course.");
         }
         this.setState({results: data["results"]});
         $(".searchInput").val(data["course"]+data["number"]);
