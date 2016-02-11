@@ -165,6 +165,12 @@ button:focus {
   color: #2e65a0;
 }
 
+.scoreBar {
+  height: 90%;
+  width: 100px;
+  color: #00C4AA;
+}
+
 .codeHeader {
   float: left;
 }
