@@ -98,7 +98,7 @@ var ResultList = React.createClass({
 
 var Result = React.createClass({
   render: function() {
-    var scoreBarWidth = {this.props.code} * 200;
+    var scoreBarWidth = this.props.code * 200;
     var scoreBarStyle = {
       height: "90%",
       width: scoreBarWidth + "px",
