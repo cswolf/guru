@@ -167,7 +167,8 @@ button:focus {
 
 .scoreBar {
   height: 90%;
-  width: 100px;
+  
+  float: right;
   color: #00C4AA;
 }
 
