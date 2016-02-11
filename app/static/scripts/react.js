@@ -96,12 +96,20 @@ var ResultList = React.createClass({
   }
 });
 
+var scoreBarWidth = this.props.code * 200
+var scoreBarStyle = {
+  height: 90%,
+  float: right,
+  backgroundColor: #00C4AA,
+  width: scoreBarWidth
+};
+
 var Result = React.createClass({
   render: function() {
     return (
       <div className="result">
         <h4>{this.props.code} &nbsp; (<a href={this.props.url} target="_blank">SSC</a>)</h4>
-        <div className="scoreBar" width={this.props.url.count}></div>
+        <div className="scoreBar" style={scoreBarStyle}></div>
         <p>{this.props.count}</p>
       </div>
     );
