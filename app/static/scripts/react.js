@@ -101,8 +101,7 @@ var scoreBarWidth = 10;
 var scoreBarStyle = {
   height: 90%,
   float: right,
-  backgroundColor: #00C4AA,
-  width: scoreBarWidth
+  backgroundColor: #00C4AA
 };
 
 var Result = React.createClass({
