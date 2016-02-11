@@ -98,12 +98,12 @@ var ResultList = React.createClass({
 
 // var scoreBarWidth = this.props.code * 200;
 var scoreBarWidth = 10;
-var scoreBarStyle = {
-  height: 90%,
-  float: right,
-  backgroundColor: #00C4AA,
-  width: scoreBarWidth + "px"
-};
+// var scoreBarStyle = {
+//   height: 90%,
+//   float: right,
+//   backgroundColor: #00C4AA,
+//   width: scoreBarWidth + "px"
+// };
 
 var Result = React.createClass({
   render: function() {
