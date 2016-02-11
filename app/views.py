@@ -19,7 +19,6 @@ def query(request):
   scores = {}
   # get key for given course
   code = course + str(number)
-  # subtract 1 since Course table is zero indexed
   # course_key = Course.objects.filter(code__startswith=code).first().unique_id - 1
   course_key = -1
   keys = {}
@@ -27,7 +26,8 @@ def query(request):
     c_key = c.unique_id
     c_code = c.code
     if c_code.startswith(code):
-      course_key = c_key
+      # subtract 1 since Similarity table is zero indexed
+      course_key = c_key - 1
     keys[c_key] = c_code
   if course_key < 0:
     res = {}
@@ -40,7 +40,7 @@ def query(request):
   regex = re.compile(r'[^\d]+')
   for sim in sims:
     score = sim.score
-    # add 1 back since Course table is zero indexed
+    # add 1 back since Course table is not zero indexed
     to_unique_id = sim.to_class + 1
     # Load Course key table in array instead
     # to_code = Course.objects.filter(unique_id=to_unique_id).first().code
@@ -55,7 +55,7 @@ def query(request):
   ### DONE: PCA ###
 
   res = {}
-  res['course'] = course_key#course
+  res['course'] = course
   res['number'] = number
   res['results'] = results
   return HttpResponse(json.dumps(res))
