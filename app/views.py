@@ -51,7 +51,7 @@ def query(request):
     if under_300 or exclude_CS:
       continue
     scores[to_code] = score
-  results = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+  results = sorted(scores.items(), key=lambda x: x[1], reverse=True)[-20:]
   ### DONE: PCA ###
 
   res = {}
