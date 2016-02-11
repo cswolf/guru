@@ -55,7 +55,7 @@ def query(request):
   ### DONE: PCA ###
 
   res = {}
-  res['course'] = course
+  res['course'] = course_key#course
   res['number'] = number
   res['results'] = results
   return HttpResponse(json.dumps(res))
