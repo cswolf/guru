@@ -34,9 +34,16 @@ matrix = []
 class_list = sorted(classes, key=lambda x: classes[x])
 # print classes
 for student in students:
-  row = [0] * len(classes.keys())
+  offered = len(classes.keys())
+
+  mean = 0
+
+  # This might be "mean centering" on students; uncomment
+  # taken = len(students[student])
+  # mean = taken / offered
+  row = [-mean] * offered
   for class_id in students[student]:
-    row[class_id] = 1
+    row[class_id] += 1
   matrix.append(row)
 
 # Perform SVD
