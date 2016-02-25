@@ -9,7 +9,7 @@ classes = {}
 i = 0
 
 # Store data from csv in dictionaries
-with open('enrolment.csv', 'rb') as csvfile:
+with open('enrolmentx.csv', 'rt') as csvfile:
   reader = csv.reader(csvfile)
   for row in reader:
     student = row[1]
@@ -47,8 +47,12 @@ k = 5
 for i in range(k, len(s)):
   s[i] = 0
 
-S = numpy.zeros((485, 665), dtype=complex)
-S[:485, :485] = numpy.diag(s)
+dim_m = len(U)
+dim_n = len(V)
+dim_min = min(dim_m, dim_n)
+
+S = numpy.zeros((dim_m, dim_n), dtype=complex)
+S[:dim_min, :dim_min] = numpy.diag(s)
 
 # Reconstruct matrix
 m_prime = numpy.dot(U, numpy.dot(S, V))
@@ -74,7 +78,7 @@ with numpy.errstate(invalid='ignore'):
 c_complex[~numpy.isfinite(c_complex)] = 0
 
 # Initialize similarity matrix
-sim = numpy.zeros((665**2,3))
+sim = numpy.zeros((dim_n**2,3))
 
 row_count = 0
 for i in range(len(c_complex)):
