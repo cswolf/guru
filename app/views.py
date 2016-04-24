@@ -26,6 +26,9 @@ def query(request):
     # keep count of these classes
     for c in classesWith:
       name = c.dept + str(c.number)
+      exclude_CS = excl and name.startswith('CPSC')
+      if exclude_CS:
+        continue
       if name in counts.keys():
         counts[name] += 1
       else:
