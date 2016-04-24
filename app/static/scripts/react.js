@@ -64,11 +64,11 @@ var SearchBar = React.createClass({
         <div className="addButton" onClick={this.addSearchTerm}>
           <p>go</p>
         </div>
-        <ResultList results={this.state.results} />
         <div className="excludeCS">
           <input className="exBox" type="checkbox"/>
           <div className="exLabel">Exclude CPSC courses</div>
         </div>
+        <ResultList results={this.state.results} />
       </div>
     );
   }
