@@ -32,6 +32,7 @@ def query(request):
         counts[name] = 1
   # sort by descending count
   results = sorted(counts.items(), key=lambda x: x[1], reverse=True)
+  results = results[:25]
   ### DONE: Frequency counting ###
 
   res = {}
