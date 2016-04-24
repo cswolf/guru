@@ -65,15 +65,16 @@ var SearchBar = React.createClass({
           <p>go</p>
         </div>
         <ResultList results={this.state.results} />
+        <div className="excludeCS">
+          <input className="exBox" type="checkbox"/>
+          <div className="exLabel">Exclude CPSC courses</div>
+        </div>
       </div>
     );
   }
 });
 
-// <div className="excludeCS">
-//   <input className="exBox" type="checkbox"/>
-//   <div className="exLabel">Exclude CPSC courses</div>
-// </div>
+
 
 // Results
 var ResultList = React.createClass({
@@ -90,7 +91,7 @@ var ResultList = React.createClass({
     return (
       <div className="resultList">
         <div className="codeHeader">Course code</div>
-        <div className="freqHeader">Cosine Similarity</div>
+        <div className="freqHeader">Frequency</div>
         {resultNodes}
       </div>
     );
@@ -109,7 +110,7 @@ var Result = React.createClass({
     return (
       <div className="result">
         <h4>{this.props.code} &nbsp; (<a href={this.props.url} target="_blank">SSC</a>)</h4>
-        <div className="scoreBar" style={scoreBarStyle}></div>
+        
         <p>{this.props.count}</p>
       </div>
     );
@@ -120,3 +121,5 @@ React.render(
   <SearchBar />,
   document.getElementById('searchBar')
 );
+
+// <div className="scoreBar" style={scoreBarStyle}></div>
