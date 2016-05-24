@@ -19,8 +19,8 @@ def query(request):
   scores = {}
   # get key for given course
   code = course + str(number)
-  course_key = Course.objects.filter(code__startswith=code).first().unique_id - 1
-  # course_key = -1
+  # course_key = Course.objects.filter(code__startswith=code).first().unique_id - 1
+  course_key = -1
   keys = {}
   for c in Course.objects.all():
     c_key = c.unique_id
@@ -43,8 +43,8 @@ def query(request):
     # add 1 back since Course table is not zero indexed
     to_unique_id = sim.to_class + 1
     # Load Course key table in array instead
-    to_code = Course.objects.filter(unique_id=to_unique_id).first().code
-    # to_code = keys[to_unique_id]
+    # to_code = Course.objects.filter(unique_id=to_unique_id).first().code
+    to_code = keys[to_unique_id]
     to_number = int(regex.sub('', to_code))
     under_300 = to_number < 300
     exclude_CS = excl and to_code.startswith('CPSC')
