@@ -19,8 +19,8 @@ def query(request):
   scores = {}
   # get key for given course
   code = course + str(number)
-  # course_key = Course.objects.filter(code__startswith=code).first().unique_id - 1
-  course_key = -1
+  course_key = Course.objects.filter(code__startswith=code).first().unique_id - 1
+  # course_key = -1
   keys = {}
   for c in Course.objects.all():
     c_key = c.unique_id
